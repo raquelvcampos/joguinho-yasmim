@@ -14,20 +14,20 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* ocupa toda a tela */
+    min-height: 100vh;
     overflow: hidden;
     text-align: center;
 }
 
 h1 {
-    font-size: 5vw; /* ajusta à largura da tela */
+    font-size: 5vw;
     color: #cc0066;
     margin: 10px 20px;
 }
 
 img {
-    width: 60vw; /* ocupa 60% da largura da tela */
-    max-width: 300px; /* não fica gigante em tablet/PC */
+    width: 60vw;
+    max-width: 300px;
     border-radius: 20px;
     margin: 20px 0;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
@@ -35,7 +35,7 @@ img {
 
 button {
     padding: 12px 25px;
-    font-size: 4vw; /* tamanho ajusta ao celular */
+    font-size: 4vw;
     border-radius: 12px;
     border: none;
     cursor: pointer;
@@ -70,28 +70,38 @@ button {
 
 <h1>Yasmim, você me ama? 💖</h1>
 
-<!-- TROQUE "foto.jpg" PELO NOME DA SUA FOTO -->
+<!-- Troque "foto.jpg" pelo nome da sua foto -->
 <img src="foto.jpg" alt="Nós dois 💕">
 
 <button id="sim" onclick="respostaSim()">Sim 💘</button>
-<button id="nao" onmouseover="fugir()">Não 😈</button>
+<button id="nao">Não 😈</button>
 
 <script>
-function respostaSim() {
-    alert("Te amo demais, Yasmim. Você é o amor da minha vida! 😍💞");
-}
+// botão "Não" inicializado fora da foto
+var botaoNao = document.getElementById("nao");
+botaoNao.style.left = "10px";
+botaoNao.style.top = "350px"; // ajuste conforme tamanho da foto
 
-// Botão "Não" foge sem cobrir a foto
+// função para mover botão "Não"
 function fugir() {
-    var botao = document.getElementById("nao");
-    var largura = window.innerWidth - botao.offsetWidth;
-    var altura = window.innerHeight - botao.offsetHeight - 150; // margem para foto
+    var largura = window.innerWidth - botaoNao.offsetWidth;
+    var altura = window.innerHeight - botaoNao.offsetHeight - 150; // deixa margem para a foto
 
-    botao.style.left = Math.random() * largura + "px";
-    botao.style.top = 150 + Math.random() * (altura - 150) + "px"; 
+    botaoNao.style.left = Math.random() * largura + "px";
+    botaoNao.style.top = 150 + Math.random() * (altura - 150) + "px"; 
 }
 
-// corações subindo
+// detectar toque no botão (celular)
+botaoNao.addEventListener("touchstart", fugir);
+// detectar mouseover (desktop)
+botaoNao.addEventListener("mouseover", fugir);
+
+// botão "Sim"
+function respostaSim() {
+    alert("Eu sabiaaaa 😍💞 Yasmim, você é o amor da minha vida!");
+}
+
+// corações animados
 function criarCoracao() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -99,12 +109,8 @@ function criarCoracao() {
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = Math.random() * 20 + 20 + "px";
     document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 4000);
+    setTimeout(() => heart.remove(), 4000);
 }
-
 setInterval(criarCoracao, 500);
 </script>
 
