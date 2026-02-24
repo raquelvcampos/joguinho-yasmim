@@ -7,22 +7,27 @@
 <style>
 body {
     background: linear-gradient(135deg, #ffccd5, #ffe6f0);
-    text-align: center;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* ocupa toda a tela */
     overflow: hidden;
-}
-
-.container {
-    margin-top: 50px;
+    text-align: center;
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 5vw; /* ajusta à largura da tela */
     color: #cc0066;
+    margin: 10px 20px;
 }
 
 img {
-    width: 250px;
+    width: 60vw; /* ocupa 60% da largura da tela */
+    max-width: 300px; /* não fica gigante em tablet/PC */
     border-radius: 20px;
     margin: 20px 0;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
@@ -30,7 +35,7 @@ img {
 
 button {
     padding: 12px 25px;
-    font-size: 18px;
+    font-size: 4vw; /* tamanho ajusta ao celular */
     border-radius: 12px;
     border: none;
     cursor: pointer;
@@ -63,17 +68,13 @@ button {
 
 <body>
 
-<div class="container">
-    <h1>Yasmim, você me ama? 💖</h1>
+<h1>Yasmim, você me ama? 💖</h1>
 
-    <!-- TROQUE "foto.jpg" PELO NOME DA SUA FOTO -->
-    <img src="foto.jpg" alt="Nós dois 💕">
+<!-- TROQUE "foto.jpg" PELO NOME DA SUA FOTO -->
+<img src="foto.jpg" alt="Nós dois 💕">
 
-    <br>
-
-    <button id="sim" onclick="respostaSim()">Sim 💘</button>
-    <button id="nao" onmouseover="fugir()">Não 😈</button>
-</div>
+<button id="sim" onclick="respostaSim()">Sim 💘</button>
+<button id="nao" onmouseover="fugir()">Não 😈</button>
 
 <script>
 function respostaSim() {
