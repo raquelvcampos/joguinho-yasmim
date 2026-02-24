@@ -81,13 +81,14 @@ function respostaSim() {
     alert("Eu sabiaaaa 😍💞 Yasmim, você é o amor da minha vida!");
 }
 
+// Botão "Não" foge sem cobrir a foto
 function fugir() {
     var botao = document.getElementById("nao");
-    var largura = window.innerWidth - 100;
-    var altura = window.innerHeight - 100;
+    var largura = window.innerWidth - botao.offsetWidth;
+    var altura = window.innerHeight - botao.offsetHeight - 150; // margem para foto
 
     botao.style.left = Math.random() * largura + "px";
-    botao.style.top = Math.random() * altura + "px";
+    botao.style.top = 150 + Math.random() * (altura - 150) + "px"; 
 }
 
 // corações subindo
